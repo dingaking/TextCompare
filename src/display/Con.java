@@ -141,7 +141,7 @@ public class Con {
 		line(50);
 		System.out.println("Willkommen zu TextCompare. Version: " + version + ". Autor: " + autor);
 		System.out.println("Grundlegende Steuerung des Programms: \n" +
-				"Um einen Vergleich zu starten geben sie 'v' ein. Das Format sollte dem .txt Format entsprechen\n " +
+				"Um einen Vergleich zu starten geben sie 'v' ein. Das Format sollte dem .txt Format entsprechen\n" +
 				"Um die Matrix zu zeigen geben sie 'm' ein. \n" +
 				"Wenn sie gespeicherte .tcs Profile laden moechten geben sie 's' ein. \n" +
 				"Damit diese Nachricht angezeigt wird druecken sie 'h'. \n" +

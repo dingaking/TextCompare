@@ -80,7 +80,7 @@ public class Profil {
 
 		} catch (IOException e) {
 
-			System.err.println("IO - Error: ");
+			System.err.println("Sonstiger IO - Error: ");
 			e.printStackTrace();
 		} 		
 		return text;

@@ -1,5 +1,7 @@
 package tools;
 
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
+
 /**
  * Vergleicht 2 NgrammListen auf Aehnlichkeit. Berechnung der Aehnlichkeit erfolgt ueber folgenden Algorithmus:
  * Summe der Durchschnittlichen Differenz der Position eines Wortes in den Listen* Laenge des Ngramms * Anzahl 
@@ -42,6 +44,15 @@ public class Vergleich {
 			return 0;
 		}
 		
+		if(!ordneTexte(first, second)){	//pruefe reihenfolge, tausche wenn noetig:
+			Profil tmp = new Profil(null, 0, null);
+			
+			tmp = first;
+			first  = second;
+			second = tmp;
+			
+		}
+		
 		
 		//TODO Ladebalken
 		double r = 0;
@@ -78,6 +89,21 @@ public class Vergleich {
 	}
 
 	/**
+	 * Prueft ob die zu vergleichenden Texte in der richtigen Reihenfolge sind, laenge der Profile ist ausschlaggebend
+	 * first soll groesser sein, second das kleinere
+	 * @param second  erstes Profil das ueberprueft wird
+	 * @param first  zweites Profil das ueberprueft wird
+	 * @return true wenn sie es sind, false wenn sie es nicht sind
+	 */
+	private boolean ordneTexte(Profil first, Profil second) {
+
+		if(first.getListeH().size() > second.getListeH().size()){
+			return false;
+		}
+		return true;
+	}
+
+	/**
 	 * Testet ob 2 Profile gleich oder Ausschnitte des anderen sind
 	 * @param first - erste Ngramm Liste
 	 * @param second - zweite Ngramm liste
@@ -88,8 +114,6 @@ public class Vergleich {
 		if(first.equals(second) || first.contains(second) || second.contains(first)){
 			return true;
 		}
-		
-
 		return false;
 	}
 
