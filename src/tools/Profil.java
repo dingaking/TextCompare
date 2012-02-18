@@ -96,14 +96,17 @@ public class Profil {
 	 */
 	private void teileAuf(String text, int n, String restriktionsenzym) {
 
+		
+		System.err.println("Funktion unvollstaendig - Programm wird beendet");
+		System.exit(0);
 		Restriktionsenzym cut = new Restriktionsenzym(restriktionsenzym, null);
 		String[] parts = new String[text.length()]; //Problem: richtige Groesse vorher bestimmen, oder erweiterbar machen 
 
 		//TODO: Text schneiden um Gewschwindikeit zu erhoehen, pruefen das dadurch keine sequenz zerstoert wird!
-
-		System.out.println(text);
 	
-		parts = text.split(cut.getErkennungssequenz()); 
+		parts = text.split((cut.getErkennungssequenz())); 
+		parts = text.split("ER"); 
+		
 		
 		String preCut = cut.getErkennungssequenz().substring(0, cut.getSchnittstelle()); //Durch Split entfernten String definieren
 		String postCut  = cut.getErkennungssequenz().substring(cut.getSchnittstelle(), cut.getErkennungssequenz().length()); //Durch Split entfernten String definieren
@@ -357,6 +360,6 @@ public boolean contains(Profil second) {
  * @see java.util.concurrent.CopyOnWriteArrayList#equals(java.lang.Object)
  */
 public boolean equals(Object arg0) {
-	return listeH.equals(arg0);
+	return name.equals(arg0);
 }
 }

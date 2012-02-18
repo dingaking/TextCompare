@@ -1,7 +1,5 @@
 package tools;
 
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
-
 /**
  * Vergleicht 2 NgrammListen auf Aehnlichkeit. Berechnung der Aehnlichkeit erfolgt ueber folgenden Algorithmus:
  * Summe der Durchschnittlichen Differenz der Position eines Wortes in den Listen* Laenge des Ngramms * Anzahl 
@@ -38,10 +36,10 @@ public class Vergleich {
 	 */
 	private double vergleiche(Profil first, Profil second) {
 
-		
-		if(testeGleichheit(first, second)){
-			System.out.println("Die Texte sind entweder gleich oder einer ist ein Aussschnitt des anderen!");
-			return 0;
+		//pruefe ob die zu vergleichenden Texte gleich sind:
+		if(testeGleichheit(second, second)){
+		System.out.println("Die Texte sind die selben!");
+			return 0; 			
 		}
 		
 		if(!ordneTexte(first, second)){	//pruefe reihenfolge, tausche wenn noetig:
@@ -53,7 +51,6 @@ public class Vergleich {
 			
 		}
 		
-		
 		//TODO Ladebalken
 		double r = 0;
 		int laengeNgramm = 0;
@@ -63,6 +60,9 @@ public class Vergleich {
 			System.err.println("Listen leer !");
 		}
 
+		Ladebalken ladebalken = new Ladebalken(first.getListeH().size());
+		int i = 0; //laufzahl fuer ladebalken
+		
 		for(Ngramm elem: first.getListeH()){
 			
 			int posFirst = 0;
@@ -72,16 +72,19 @@ public class Vergleich {
 					
 				laengeNgramm = elem.getName().length();
 				r += (posInSec(elem.getName(), first, second)-posFirst)*laengeNgramm;		//berechne r		
-				anzahl++;
+				anzahl+=elem.getAnzahl();
 			}
+
+			ladebalken.run(i++);
 			posFirst++;
+			
 		}
 
 		display.Con.testAussage("Fertig" + r);
 		
-		System.out.println("Von " + (first.getListeH().size()+second.getListeH().size()) + " vorhandenen Ngrammen wurden " +  anzahl + " uebereinstimmungen gefunden," +
+		System.out.println("\nVon " + (first.getListeH().size()+second.getListeH().size()) + " vorhandenen Ngrammen wurden " +  anzahl + " uebereinstimmungen gefunden," +
 				"\ndas entspricht 1/" + (first.getListeH().size()+second.getListeH().size())/anzahl);
-		System.out.println("Die Durchschnittliche Differenz betraegt: " + Math.round(((r/anzahl))) + " Schritte");
+		System.out.println("Die Durchschnittliche Differenz betraegt: " + Math.round(r/anzahl) + " Schritte");
 		
 		r /= first.getListeH().size()+second.getListeH().size();		//teile aehnlichkeit durch laenge der beiden texte repraesentiert durch die laenge ihrer wortlisten
 		
@@ -111,7 +114,8 @@ public class Vergleich {
 	 */
 	private boolean testeGleichheit(Profil first, Profil second) {
 
-		if(first.equals(second) || first.contains(second) || second.contains(first)){
+		
+		if(first.getName().equalsIgnoreCase(second.getName()) || first.getListeH().equals(second.getListeH())){ 
 			return true;
 		}
 		return false;
