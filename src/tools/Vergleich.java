@@ -37,7 +37,7 @@ public class Vergleich {
 	private double vergleiche(Profil first, Profil second) {
 
 		//pruefe ob die zu vergleichenden Texte gleich sind:
-		if(testeGleichheit(second, second)){
+		if(testeGleichheit(first, second)){
 		System.out.println("Die Texte sind die selben!");
 			return 0; 			
 		}
@@ -50,8 +50,6 @@ public class Vergleich {
 			second = tmp;
 			
 		}
-		
-		//TODO Ladebalken
 		double r = 0;
 		int laengeNgramm = 0;
 		int anzahl = 0;
@@ -115,7 +113,7 @@ public class Vergleich {
 	private boolean testeGleichheit(Profil first, Profil second) {
 
 		
-		if(first.getName().equalsIgnoreCase(second.getName()) || first.getListeH().equals(second.getListeH())){ 
+		if(first.getName().equalsIgnoreCase(second.getName()) && first.getListeH().size() == (second.getListeH().size())){ 
 			return true;
 		}
 		return false;
