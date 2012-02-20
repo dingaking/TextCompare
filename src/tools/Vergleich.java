@@ -60,6 +60,8 @@ public class Vergleich {
 
 		Ladebalken ladebalken = new Ladebalken(first.getListeH().size());
 		int i = 0; //laufzahl fuer ladebalken
+		int SummeLaenge = 0;
+
 		
 		for(Ngramm elem: first.getListeH()){
 			
@@ -71,6 +73,7 @@ public class Vergleich {
 				laengeNgramm = elem.getName().length();
 				r += (posInSec(elem.getName(), first, second)-posFirst)*laengeNgramm;		//berechne r		
 				anzahl+=elem.getAnzahl();
+			SummeLaenge += laengeNgramm;
 			}
 
 			ladebalken.run(i++);
@@ -82,7 +85,7 @@ public class Vergleich {
 		
 		System.out.println("\nVon " + (first.getListeH().size()+second.getListeH().size()) + " vorhandenen Ngrammen wurden " +  anzahl + " uebereinstimmungen gefunden," +
 				"\ndas entspricht 1/" + (first.getListeH().size()+second.getListeH().size())/anzahl);
-		System.out.println("Die Durchschnittliche Differenz betraegt: " + Math.round(r/anzahl) + " Schritte");
+		System.out.println("Die Durchschnittliche Differenz betraegt: " + Math.round(r/(anzahl*4)) + " Schritte"); //4 sollte durch spezifische laenge ersetzt werden
 		
 		r /= first.getListeH().size()+second.getListeH().size();		//teile aehnlichkeit durch laenge der beiden texte repraesentiert durch die laenge ihrer wortlisten
 		
