@@ -14,7 +14,7 @@ import tools.getSave;
  */
 public class Con {
 
-	private static String version = "0.3";
+	private static String version = "0.3.3";
 	private static String autor = "M. Menzel";
 	private static boolean TestAussagen = false;
 

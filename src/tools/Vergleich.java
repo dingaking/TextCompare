@@ -81,6 +81,7 @@ public class Vergleich {
 			
 		}
 
+		int durchschnittlicheLaengeNgramm = SummeLaenge/anzahl;
 		display.Con.testAussage("Fertig" + r);
 		
 		System.out.println("\nVon " + (first.getListeH().size()+second.getListeH().size()) + " vorhandenen Ngrammen wurden " +  anzahl + " uebereinstimmungen gefunden," +
