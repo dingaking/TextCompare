@@ -87,8 +87,8 @@ public class Vergleich {
 				"\ndas entspricht 1/" + (first.getListeH().size()+second.getListeH().size())/anzahl);
 		System.out.println("Die Durchschnittliche Differenz betraegt: " + Math.round(r/(anzahl*4)) + " Schritte"); //4 sollte durch spezifische laenge ersetzt werden
 		
-		r /= first.getListeH().size()+second.getListeH().size();		//teile aehnlichkeit durch laenge der beiden texte repraesentiert durch die laenge ihrer wortlisten
-		
+		r /= 4*(first.getListeH().size()+second.getListeH().size());		//teile aehnlichkeit durch laenge der beiden texte repraesentiert durch die laenge ihrer wortlisten
+																								//4 sollte durch spezifische Laenge ersetzt werden
 		return Math.round(r); //return gerundetes r
 	}
 
