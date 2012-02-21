@@ -127,9 +127,9 @@ public class Matrix {
 	public void zeigeMatrix() {
 
 		int i = aehnlichkeit.length;
-		System.out.print("   __");
+		System.out.print("    __");
 		for(int j = 0; j < i ; j++){
-			System.out.print((j+1) + "____"); //Zeichne obere Zeile
+			System.out.print((j+1) + "_____"); //Zeichne obere Zeile
 		}
 		System.out.println();
 
@@ -144,8 +144,8 @@ public class Matrix {
 				String nr = String.valueOf(Math.round(aehnlichkeit[p][s]));
 				int laenge=nr.length();
 
-				if(laenge == 1)laenge-=2;
-				if(laenge == 2)laenge--;
+	//			if(laenge == 1)laenge-=2;
+//				if(laenge == 2)laenge--;
 
 				for(int l = laenge ; l < 5; l++ ){
 					System.out.print(" ");
