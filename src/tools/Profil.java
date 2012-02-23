@@ -99,19 +99,18 @@ public class Profil {
 		
 		System.err.println("Funktion unvollstaendig - Programm wird beendet");
 		System.exit(0);
+		
+		
 		Restriktionsenzym cut = new Restriktionsenzym(restriktionsenzym, null);
 		String[] parts = new String[text.length()]; //Problem: richtige Groesse vorher bestimmen, oder erweiterbar machen 
 
 		//TODO: Text schneiden um Gewschwindikeit zu erhoehen, pruefen das dadurch keine sequenz zerstoert wird!
 	
 		parts = text.split((cut.getErkennungssequenz())); 
-		parts = text.split("ER"); 
 		
 		
 		String preCut = cut.getErkennungssequenz().substring(0, cut.getSchnittstelle()); //Durch Split entfernten String definieren
 		String postCut  = cut.getErkennungssequenz().substring(cut.getSchnittstelle(), cut.getErkennungssequenz().length()); //Durch Split entfernten String definieren
-	
-		System.out.println(preCut + "...." + postCut);
 		
 		for(String elem: parts){
 			Ngramm random = new Ngramm(preCut + elem + postCut, 1);
