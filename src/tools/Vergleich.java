@@ -90,6 +90,7 @@ public class Vergleich {
 
 		r = Math.round((r*((first.getListeH().size()+second.getListeH().size())/anzahl)) / (durchschnittlicheLaengeNgramm*(first.getListeH().size()+second.getListeH().size())));		
 		//teile aehnlichkeit mal der Anteile der Uebereinstimmungen durch laenge der beiden texte repraesentiert durch die laenge ihrer wortlisten
+
 		
 		return r;
 	}
