@@ -90,9 +90,9 @@ public class Con {
 				getSave dflt3;
 				try {
 					dflt3 = new getSave(link1, link2);
-
+					
 					standart.addVergleich(dflt3.returnSave());
-
+				
 				} catch (IOException e) {
 					
 					System.out.println("Mit der Datei ist ein Fehler aufgetreten, sie existiert nicht oder ist Fehlerhaft");

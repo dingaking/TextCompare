@@ -2,8 +2,7 @@ package tools;
 
 /**
  * Vergleicht 2 NgrammListen auf Aehnlichkeit. Berechnung der Aehnlichkeit erfolgt ueber folgenden Algorithmus:
- * Summe der Durchschnittlichen Differenz der Position eines Wortes in den Listen* Laenge des Ngramms * Anzahl 
- * gefundener Woerter / Anzahl Woerter Gesamt
+ * Summe der Durchschnittlichen Differenz der Position eines Wortes *  Laenge des Ngramms / Anzahl Woerter Gesamt
  * Gerundet auf eine Nachkommstelle
  * @author menzel
  *
@@ -73,7 +72,7 @@ public class Vergleich {
 				laengeNgramm = elem.getName().length();
 				r += (posInSec(elem.getName(), first, second)-posFirst)*laengeNgramm;		//berechne r		
 				anzahl+=elem.getAnzahl();
-			SummeLaenge += laengeNgramm;
+			SummeLaenge += laengeNgramm*elem.getAnzahl(); // um durchschnittliche laenge zu errechnen
 			}
 
 			ladebalken.run(i++);
@@ -81,16 +80,18 @@ public class Vergleich {
 			
 		}
 
-		int durchschnittlicheLaengeNgramm = SummeLaenge/anzahl;
+		double durchschnittlicheLaengeNgramm = SummeLaenge/anzahl;
+		
 		display.Con.testAussage("Fertig" + r);
 		
 		System.out.println("\nVon " + (first.getListeH().size()+second.getListeH().size()) + " vorhandenen Ngrammen wurden " +  anzahl + " uebereinstimmungen gefunden," +
-				"\ndas entspricht 1/" + (first.getListeH().size()+second.getListeH().size())/anzahl);
-		System.out.println("Die Durchschnittliche Differenz betraegt: " + Math.round(r/(anzahl*4)) + " Schritte"); //4 sollte durch spezifische laenge ersetzt werden
+				"\ndas entspricht in etwa 1/" + (first.getListeH().size()+second.getListeH().size())/anzahl);
+		System.out.println("Die Durchschnittliche Differenz betraegt " + Math.round(r/(anzahl*durchschnittlicheLaengeNgramm)) + " Schritte"); 
+
+		r = Math.round((r*((first.getListeH().size()+second.getListeH().size())/anzahl)) / (durchschnittlicheLaengeNgramm*(first.getListeH().size()+second.getListeH().size())));		
+		//teile aehnlichkeit mal der Anteile der Uebereinstimmungen durch laenge der beiden texte repraesentiert durch die laenge ihrer wortlisten
 		
-		r /= 4*(first.getListeH().size()+second.getListeH().size());		//teile aehnlichkeit durch laenge der beiden texte repraesentiert durch die laenge ihrer wortlisten
-																								//4 sollte durch spezifische Laenge ersetzt werden
-		return Math.round(r); //return gerundetes r
+		return r;
 	}
 
 	/**

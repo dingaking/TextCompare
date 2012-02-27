@@ -28,8 +28,8 @@ public class Matrix {
 		int i = 0;
 		
 		
-		System.out.println("\nAdjazenzmatrix, die Zahl zeigt die Aehnlichkeit ein, wobei (zzt)\n " +
-				"eine hoehere Zahl eine groessere Aehnlichkeit bedeutet:");
+		System.out.println("\nAdjazenzmatrix, die Zahl zeigt die Aehnlichkeit ein, wobei\n " +
+				"eine hoehere Zahl eine groessere Differenz der Texte bedeutet:");
 		
 		for(Vergleich each: vergleiche){
 

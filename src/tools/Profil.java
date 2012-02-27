@@ -161,12 +161,12 @@ private void bestimmeHaeufigkeiten() {
 	System.out.println("Parse Text:");
 	int j = 0; // laufvariable fuer Ladebalken
 
-	Ladebalken ladebalken = new Ladebalken((int)Math.sqrt(liste.size()));
+	Ladebalken ladebalken = new Ladebalken(liste.size());
 
 	//	for(Ngramm elem: liste){
 	for(Iterator<Ngramm> i = liste.iterator();i.hasNext();){
 		Ngramm elem = (Ngramm) i.next();
-		ladebalken.run(2*Math.sqrt(j));
+		ladebalken.run(j);
 
 		j++;
 
