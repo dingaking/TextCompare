@@ -14,9 +14,9 @@ import tools.getSave;
  */
 public class Con {
 
-	private static String version = "0.4.1";
-	private static String autor = "M. Menzel";
-	private static boolean TestAussagen = false;
+	private static final String version = "0.4.2";
+	private static final String autor = "M. Menzel";
+	private static final boolean TestAussagen = false;
 
 
 	/**
@@ -135,7 +135,9 @@ public class Con {
 
 	/**
 	 * Begruesst den Nutzer und gibt Infos zum Programm und zur Bedienung aus
+	 * Gibt Hinweis ob TestAussagen an sind (-> SuppressWarning)
 	 */
+	@SuppressWarnings("unused")
 	private static void willkommen() {
 
 		line(50);
