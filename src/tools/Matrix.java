@@ -144,9 +144,6 @@ public class Matrix {
 				String nr = String.valueOf(Math.round(aehnlichkeit[p][s]));
 				int laenge=nr.length();
 
-	//			if(laenge == 1)laenge-=2;
-//				if(laenge == 2)laenge--;
-
 				for(int l = laenge ; l < 5; l++ ){
 					System.out.print(" ");
 				}
